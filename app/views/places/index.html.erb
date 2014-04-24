@@ -1,0 +1,34 @@
+<h1>Cincinnati happy hours</h1>
+
+<%= form_tag places_path, method: :get, class: "form-inline" do %>
+  <ul class="list-unstyled">
+    <li>
+      <%= check_box_tag :use_location, true, params[:use_location] %>
+      <%= label_tag :use_location, 'Search near my location' %>
+      <%= hidden_field_tag :address, params[:address] %>
+    </li>
+
+    <li>
+      <%= check_box_tag :open_only, true, params[:open_only] %>
+      <%= label_tag :open_only, 'Open now' %>
+    </li>
+  </ul>
+<% end %>
+
+<div class="row">
+  <div class="col-md-8">
+    <%= render 'list', places: @places %>
+  </div>
+  <div class="col-md-4">
+  </div>
+</div>
+
+<% if can? :create, Place %>
+  <p><%= link_to 'Add a place', new_place_path %></p>
+<% end %>
+
+<p class="small">
+  Geocoding courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a>
+  <img src="http://developer.mapquest.com/content/osm/mq_logo.png">.
+  Map data © OpenStreetMap contributors.
+</p>

@@ -1,0 +1,31 @@
+<% if places.any? %>
+  <p>
+    Showing
+    <%= places.size %>
+    <%= "current" if params[:open_only].present? %>
+    happy hours<%= " near #{params[:address]}" if params[:address].present? %>
+  </p>
+  <div class="list-group">
+    <% places.each do |place| %>
+      <%= link_to place, class: "list-group-item place" do %>
+        <p class="list-group-item-heading h4">
+          <%= place.name %>
+          <small class="address"><%= place.address %></small>
+          <% if place.respond_to? :distance %>
+            <span class="distance"><%= pluralize(place.distance.to_f.round(1), 'mile')  %></span>
+          <% end %>
+        </p>
+        <% place.specials.each do |special| %>
+          <% if !params[:open_only] || special.available_now? %>
+            <div class="special">
+              <strong><%= humanize_time_range special %>, <%= humanize_day_range special %></strong>
+              <%= simple_format special.details %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+<% else %>
+  <p>No results found :(</p>
+<% end %>

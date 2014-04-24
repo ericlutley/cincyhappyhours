@@ -1,0 +1,32 @@
+<script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GMAPS_API_KEY'] %>&sensor=false">
+</script>
+
+  <div id="map-canvas" style="width: 600px; height: 400px;"></div>
+
+  <script type="text/javascript">
+    $(function() {
+      var mapOptions = {
+        center: new google.maps.LatLng(39.101898, -84.5130269),
+        zoom: 11,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+      // Add the places to the map
+      <% places.each do |place| %>
+        var marker<%= place.id %> = new google.maps.Marker({
+            position: new google.maps.LatLng(<%= place.latitude %>,<%= place.longitude %>),
+            map: map,
+            title: "<%= place.name %>"
+        });
+
+        var contentString<%= place.id %> = "<%= escape_javascript render('info_window', place: place) %>";
+        var infoWindow<%= place.id %> = new google.maps.InfoWindow({ content: contentString<%= place.id %> });
+
+        google.maps.event.addListener(marker<%= place.id %>, 'click', function() {
+          infoWindow<%= place.id %>.open(map,marker<%= place.id %>);
+        });
+      <% end %>
+    });
+  </script>
