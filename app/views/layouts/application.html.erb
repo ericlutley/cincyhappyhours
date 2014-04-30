@@ -10,17 +10,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= render 'navbar' %>
+  
   <div class="container">
-    <div id="user_nav" class="pull-right">
-      <% if current_user %>
-        <%= image_tag current_user.image_url %>
-        <%= current_user.name %>
-        <%= link_to "Sign out", sign_out_path, :method => :delete %>
-      <% else %>
-        <%= link_to "Sign in with Facebook", "/auth/facebook" %>
-      <% end %>
-    </div>
-
     <%= yield %>
   </div>
 </body>
