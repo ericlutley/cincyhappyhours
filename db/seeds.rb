@@ -19,7 +19,7 @@ p.specials.create starts_at: "16:00", ends_at: "02:00", start_day: 2, end_day: 2
 p.specials.create starts_at: "20:00", ends_at: "02:00", start_day: 0, end_day: 0, details: "$3 Absolut cocktails"
 
 p= Place.create name: "Via Vite", address: "520 Vine St Cincinnati, OH 45202"
-p.specials.create starts_at: "15:00", ends_at: "19:00", details: "$2 Domestic beers\r\n$4 house wine\r\n1/2 priced pizzas"
+p.specials.create starts_at: "15:00", ends_at: "19:00", details: "1/2 priced beer, wine, and cocktails"
 
 p = Place.create name: "Igby's", address: "122 E Sixth Street, Cincinnati, OH 45202"
 p.specials.create starts_at: "16:00", ends_at: "20:00", end_day: 6, details: "$1 off drafts\r\n$1 off calls\r\n$3 domestic bottles\r\n$5 signature cocktail of the month\r\n$20 select bottles of wine"

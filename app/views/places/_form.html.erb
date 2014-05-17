@@ -24,12 +24,13 @@
     <%= f.fields_for :specials do |special_form| %>
       <div class="special">
         <div class="field">
-          Hours: <%= special_form.text_field :starts_at %> to <%= special_form.text_field :ends_at %>
+          Hours: <%= special_form.text_field :starts_at, :class => "time" %>
+          to <%= special_form.text_field :ends_at, :class => "time" %>
         </div>
 
         <div class="field">
           <%= special_form.label :details %><br />
-          <%= special_form.text_area :details, :class => "special-details" %>
+          <%= special_form.text_area :details, :class => "special-details", :rows => 5 %>
         </div>
 
         <%= special_form.link_to_remove "Remove this special", :data => { :confirm => "Are you sure?" } %>

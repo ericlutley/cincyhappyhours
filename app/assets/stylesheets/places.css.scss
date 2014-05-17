@@ -8,13 +8,17 @@
 }
 
 form {
+  input.time {
+    width: 6em;
+  }
+
   .special {
     border: 1px solid;
     margin-top: 1em;
     padding: 1em;
 
     .special-details {
-      height: 10em;
+      width: 100%;
     }
   }
 
