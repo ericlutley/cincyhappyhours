@@ -19,4 +19,9 @@ module PlacesHelper
   def format_time(db_time)
     Time.parse(db_time).strftime("%l:%M")
   end
+
+  def static_map_url(place)
+    location = "#{place.latitude},#{place.longitude}"
+    "http://maps.googleapis.com/maps/api/staticmap?center=#{location}&zoom=16&size=400x400&markers=#{location}&sensor=false"
+  end
 end
