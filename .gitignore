@@ -19,3 +19,6 @@
 
 # Ignore rbenv's local ruby version
 /.ruby-version
+
+# Ignore gems installed to vendor/bundle
+/vendor/bundle
