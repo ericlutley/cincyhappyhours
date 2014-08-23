@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The page you were looking for doesn't exist (404)</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The page you were looking for doesn't exist (404) | Cincy Happy Hours</title>
   <style type="text/css">
     body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
-    div.dialog {
-      width: 25em;
-      padding: 0 4em;
-      margin: 4em auto 0 auto;
-      border: 1px solid #ccc;
-      border-right-color: #999;
-      border-bottom-color: #999;
-    }
-    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
+    div.image { margin: auto; max-width: 640px; width: 80%; }
+    div.image img { width: 100%; }
+    div.credit { font-size: 75%; text-align: right; }
+    h1, p { font-size: 100%; color: red; line-height: 1em; }
   </style>
 </head>
 
 <body>
   <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <h1>The page you were looking for doesn't exist.</h1>
-    <p>You may have mistyped the address or the page may have moved.</p>
+  <h1>We couldn't find the page you were looking for.</h1>
+  <div class="image">
+    <img src="images/bottom_of_bottle.jpg" %>
+    <div class="credit">Image courtesy of <a href="http://ziggylycus.deviantart.com/art/bottom-of-the-bottle-77610187">Ziggylycus</a></div>
   </div>
+  <p>
+    They say you won't find this page at the bottom of your bottle,
+    but it never hurts to check.
+  </p>
+  <p>Failing that, maybe it's time to <a href="/">go home</a>.</p>
 </body>
 </html>
