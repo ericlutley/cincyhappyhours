@@ -1,0 +1,29 @@
+<%= form_for [@place, @special] do |f| %>
+  <div class="special">
+    <div class="field">
+      <%= label_tag 'Days' %><br />
+      <%= f.label :start_day, :class => "sr-only" %>
+      <%= f.select :start_day, day_options_for_select %>
+      to
+      <%= f.label :end_day, :class => "sr-only" %>
+      <%= f.select :end_day, day_options_for_select %>
+    </div>
+    <div class="field">
+      <%= label_tag 'Hours' %><br />
+      <%= f.label :starts_at, :class => "sr-only" %>
+      <%= f.text_field :starts_at, :class => "time" %>
+      to
+      <%= f.label :ends_at, :class => "sr-only" %>
+      <%= f.text_field :ends_at, :class => "time" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :details %><br />
+      <%= f.text_area :details, :class => "special-details", :rows => 5 %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit :class => "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

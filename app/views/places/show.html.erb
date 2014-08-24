@@ -3,11 +3,16 @@
 <h1><%= @place.name %></h1>
 <p class="address"><%= @place.address %></p>
 
+<% if can? :update, @place %>
+  <p><%= link_to 'Edit this place', edit_place_path(@place) %></p>
+<% end %>
+
 <h2>Specials</h2>
 <table class="table table-bordered table-condensed">
   <tr>
     <th>Hours</th>
     <th>Details</th>
+    <%= content_tag(:th, 'Actions') if can? :update, @place => Special %>
   </tr>
   <%= content_tag_for :tr, @place.specials do |special| %>
     <td>
@@ -15,10 +20,14 @@
       <%= humanize_time_range(special) %>
     </td>
     <td><%= simple_format special.details %></td>
+    <% if can? :update, @special %>
+      <td><%= link_to 'Edit', [:edit, @place, special], :class => 'btn btn-default' %></td>
+    <% end%>
   <% end %>
 </table>
 
-<% if can? :update, @place %>
-  <%= link_to 'Edit', edit_place_path(@place) %> |
+<% if can? :create, @place => Special %>
+  <p class="text-center"><%= link_to 'Add Special', [:new, @place, :special], :class => 'btn btn-info' %></p>
 <% end %>
+
 <%= link_to 'Back', places_path %>

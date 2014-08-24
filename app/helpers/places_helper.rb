@@ -1,4 +1,8 @@
 module PlacesHelper
+  def day_options_for_select
+    Date::DAYNAMES.map.with_index { |d, i| [d, i] }
+  end
+
   def humanize_day_range(special)
     if special.start_day == 0 && special.end_day == 6
       "every day"
