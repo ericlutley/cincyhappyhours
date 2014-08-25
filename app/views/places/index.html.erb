@@ -1,4 +1,4 @@
-<%= form_tag places_path, method: :get, class: "form-inline" do %>
+<%= form_tag places_path, method: :get, class: "form-inline", id: 'browse-places', remote: true do %>
   <ul class="list-unstyled">
     <li>
       <%= check_box_tag :use_location, true, params[:use_location] %>
@@ -14,7 +14,7 @@
 <% end %>
 
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-8 places">
     <%= render 'list', places: @places %>
   </div>
   <div class="col-md-4">

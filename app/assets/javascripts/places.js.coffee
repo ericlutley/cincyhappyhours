@@ -13,6 +13,9 @@ $ ->
       $("input#address").val("")
       $("form").submit()
 
+  $('#browse-places').bind 'ajax:success', (evt, data) ->
+    $('.places')[0].innerHTML = data
+
 window.receiveLocation = (position) ->
   location = position.coords.latitude + "," + position.coords.longitude
   $("input#address").val(location)
