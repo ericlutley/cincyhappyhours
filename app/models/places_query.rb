@@ -8,7 +8,7 @@ class PlacesQuery
   end
 
   def results
-    places = Place.includes(:specials)
+    places = Place.includes(:specials).where("specials.id IS NOT NULL")
 
     if @location
       places = places.near(@location, 20)
