@@ -22,8 +22,10 @@
 </div>
 
 <% if can? :create, Place %>
-  <p><%= link_to 'Add a place', new_place_path %></p>
+  <p>Near a good happy hour spot? <%= link_to 'Add it here', new_place_path, class: 'btn btn-default' %></p>
 <% end %>
+
+<hr />
 
 <p class="small">
   Geocoding courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a>

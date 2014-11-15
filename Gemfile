@@ -33,13 +33,14 @@ gem 'coffee-rails'
 # gem 'therubyracer', :platforms => :ruby
 gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails'
-
+gem 'underscore-rails'
 # To use debugger
 # gem 'debugger'
 
 gem 'cancan'
 gem 'figaro'
 gem 'geocoder'
+gem "koala", "~> 1.10.0rc"
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'newrelic_rpm'

@@ -1,6 +1,7 @@
 class PlacesController < ApplicationController
   load_and_authorize_resource
   skip_load_and_authorize_resource :only => :create
+  before_filter :redirect_if_exists, only: :create
 
   # GET /places
   def index
@@ -44,5 +45,12 @@ class PlacesController < ApplicationController
 
   def place_params
     params.require(:place).permit!
+  end
+
+  def redirect_if_exists
+    if params[:facebook_id]
+      place = Place.with_facebook_id(params[:facebook_id]).first
+      redirect_to edit_place_path(place) if place
+    end
   end
 end

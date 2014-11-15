@@ -1,16 +1,13 @@
 @omniauth @javascript
-Feature: Add place
+Feature: Edit place
   In order to make the listings more useful
   As someone in Cincinnati
-  I want to add a new place to the website
+  I want to edit an existing place on the website
 
-  Scenario: Add place
+  Scenario: Edit place
     Given I am signed in as an admin
-    When I go to the homepage
-    And I click on "Add a place"
-    And I fill in "Via Vite" for "Name"
-    And I fill in "520 Vine St, Cincinnati, OH" for "Address"
-    And I click on "Create Place"
+    And a bar named "Via Vite"
+    When I go to the bar's page
     And I click on "Add Special"
     And I select "Tuesday" for "Start day"
     And I select "Thursday" for "End day"

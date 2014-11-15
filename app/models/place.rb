@@ -3,8 +3,12 @@ class Place < ActiveRecord::Base
   accepts_nested_attributes_for :specials
 
   geocoded_by :address
-  after_validation :geocode#, :if => -> (obj) { obj.address.present? and obj.address_changed? }
+  after_validation :geocode, unless: -> (obj) { obj.latitude.present? && obj.longitude.present? }
 
   validates :name, presence: true
   validates :address, presence: true
+
+  def self.with_facebook_id(facebook_id)
+    where("facebook_id = ? AND facebook_id IS NOT NULL", facebook_id)
+  end
 end

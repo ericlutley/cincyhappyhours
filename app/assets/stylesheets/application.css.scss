@@ -13,4 +13,9 @@
  */
 
 @import "bootstrap";
+@import "facebook_places";
 @import "places";
+
+[role="button"] {
+  cursor: pointer;
+}

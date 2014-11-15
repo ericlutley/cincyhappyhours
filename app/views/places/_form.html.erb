@@ -1,4 +1,4 @@
-<%= form_for @place do |f| %>
+<%= form_for @place, html: { role: 'form' } do |f| %>
   <% if @place.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@place.errors.count, "error") %> prohibited this place from being saved:</h2>
@@ -11,16 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :address %><br />
-    <%= f.text_field :address %>
+    <%= f.text_field :address, class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.button 'Reset', class: 'btn btn-link', type: 'reset' if defined?(reset) && reset %>
+    <%= f.submit class: 'btn btn-primary' %>
   </div>
 <% end %>

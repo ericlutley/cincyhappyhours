@@ -3,6 +3,8 @@ HappyHour::Application.routes.draw do
     resources :specials
   end
 
+  get '/facebook_places' => 'facebook_places#index'
+
   root :to => 'places#index'
 
   get '/auth/:provider/callback' => 'sessions#create'

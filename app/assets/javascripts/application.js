@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require responsive_ie10_fix
+//= require underscore
 //= require_tree .
