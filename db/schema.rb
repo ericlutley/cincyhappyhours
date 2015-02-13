@@ -16,24 +16,24 @@ ActiveRecord::Schema.define(version: 20141114050412) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "places", force: true do |t|
-    t.string   "name"
-    t.string   "address"
+  create_table "places", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.string   "address",     limit: 255
     t.float    "latitude"
     t.float    "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "facebook_id"
+    t.string   "facebook_id", limit: 255
   end
 
   add_index "places", ["facebook_id"], name: "index_places_on_facebook_id", unique: true, using: :btree
 
-  create_table "specials", force: true do |t|
+  create_table "specials", force: :cascade do |t|
     t.integer  "place_id"
-    t.string   "starts_at",  default: "15:00"
-    t.string   "ends_at",    default: "18:00"
-    t.integer  "start_day",  default: 1
-    t.integer  "end_day",    default: 5
+    t.string   "starts_at",  limit: 255, default: "15:00"
+    t.string   "ends_at",    limit: 255, default: "18:00"
+    t.integer  "start_day",              default: 1
+    t.integer  "end_day",                default: 5
     t.text     "details"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -41,12 +41,12 @@ ActiveRecord::Schema.define(version: 20141114050412) do
 
   add_index "specials", ["place_id"], name: "index_specials_on_place_id", using: :btree
 
-  create_table "users", force: true do |t|
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "name"
-    t.string   "image_url"
-    t.boolean  "admin",      default: false, null: false
+  create_table "users", force: :cascade do |t|
+    t.string   "provider",   limit: 255
+    t.string   "uid",        limit: 255
+    t.string   "name",       limit: 255
+    t.string   "image_url",  limit: 255
+    t.boolean  "admin",                  default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
