@@ -8,6 +8,8 @@ gem 'rails', '4.2.0'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
+gem 'puma'
+gem 'rack-timeout'
 
 
 group :development, :test do
