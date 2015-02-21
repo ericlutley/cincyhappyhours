@@ -22,3 +22,6 @@
 
 # Ignore gems installed to vendor/bundle
 /vendor/bundle
+
+#Ignore test coverage data
+/coverage
