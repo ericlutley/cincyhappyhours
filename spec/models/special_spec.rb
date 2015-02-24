@@ -77,4 +77,7 @@ describe Special do
       end
     end
   end
+
+  # DB indexes
+  it { should have_db_index(:place_id) }
 end

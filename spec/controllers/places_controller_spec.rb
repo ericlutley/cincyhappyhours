@@ -2,8 +2,7 @@ require 'spec_helper'
 
 describe PlacesController do
   describe "POST create" do
-    let(:place_params) { { name: "Via Vite", address: "520 Vine St, Cincinnati, OH", specials_attributes: specials_params } }
-    let(:specials_params) { { 0 => { details: "1/2 priced drinks" } } }
+    let(:place_params) { { name: "Via Vite", address: "520 Vine St, Cincinnati, OH" } }
 
     context "when signed in as an admin" do
       let(:user) { FactoryGirl.create :admin }
@@ -12,10 +11,6 @@ describe PlacesController do
 
       it "creates a new place" do
         expect { post :create, place: place_params }.to change{ Place.count }.by(1)
-      end
-
-      it "creates a new special" do
-        expect { post :create, place: place_params }.to change{ Special.count }.by(1)
       end
     end
 

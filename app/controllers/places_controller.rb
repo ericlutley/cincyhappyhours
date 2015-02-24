@@ -1,7 +1,7 @@
 class PlacesController < ApplicationController
   load_and_authorize_resource
-  skip_load_and_authorize_resource :only => :create
-  before_filter :redirect_if_exists, only: :create
+  skip_load_and_authorize_resource only: [:new, :create]
+  before_filter :redirect_if_exists, only: [:new, :create]
 
   # GET /places
   def index
@@ -11,6 +11,15 @@ class PlacesController < ApplicationController
       render partial: 'list', locals: { places: @places }
     else
       # Render index.html
+    end
+  end
+
+  def new
+    @place = Place.new(new_place_params)
+    authorize! :create, @place
+
+    if @place.external_id.present?
+      flash.notice = "#{@place.name} is not in our database, but you can add it below."
     end
   end
 
@@ -44,13 +53,17 @@ class PlacesController < ApplicationController
   private
 
   def place_params
-    params.require(:place).permit!
+    params.require(:place).permit(:name, :address, :latitude, :longitude, :external_id)
   end
 
   def redirect_if_exists
-    if params[:facebook_id]
-      place = Place.with_facebook_id(params[:facebook_id]).first
-      redirect_to edit_place_path(place) if place
+    # Ensure we have a place hash
+    params[:place] ||= { name: nil }
+
+    external_id = params[:place][:external_id]
+    if external_id.present?
+      place = Place.with_external_id(external_id).first
+      redirect_to place_path(place) if place
     end
   end
 end

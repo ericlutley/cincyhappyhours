@@ -15,4 +15,5 @@
 //= require bootstrap
 //= require responsive_ie10_fix
 //= require underscore
+//= require react
 //= require_tree .

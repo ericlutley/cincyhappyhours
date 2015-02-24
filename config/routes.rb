@@ -1,9 +1,8 @@
 HappyHour::Application.routes.draw do
   resources :places do
+    get 'search', on: :collection
     resources :specials
   end
-
-  get '/facebook_places' => 'facebook_places#index'
 
   root :to => 'places#index'
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141114050412) do
+ActiveRecord::Schema.define(version: 20150221034055) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,8 +24,10 @@ ActiveRecord::Schema.define(version: 20141114050412) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "facebook_id", limit: 255
+    t.string   "external_id", limit: 255
   end
 
+  add_index "places", ["external_id"], name: "index_places_on_external_id", unique: true, using: :btree
   add_index "places", ["facebook_id"], name: "index_places_on_facebook_id", unique: true, using: :btree
 
   create_table "specials", force: :cascade do |t|

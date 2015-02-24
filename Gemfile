@@ -20,8 +20,9 @@ group :test do
   gem 'capybara'
   gem "capybara-webkit"
   gem "codeclimate-test-reporter", require: false
-  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails', require: false
   gem 'database_cleaner'
+  gem 'shoulda-matchers', require: false
   gem 'rspec-rails', '~> 2.0'
   gem 'timecop'
 end
@@ -32,13 +33,10 @@ gem 'rails_12factor', group: :production
 gem 'sass-rails', '>= 4.0.2'
 gem 'bootstrap-sass'
 gem 'coffee-rails'
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', :platforms => :ruby
 gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails'
 gem 'underscore-rails'
-# To use debugger
-# gem 'debugger'
+gem 'react-rails', '~> 0.12.0.0'
 
 gem 'cancan'
 gem 'figaro'

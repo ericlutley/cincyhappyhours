@@ -16,6 +16,29 @@ $ ->
   $('#browse-places').bind 'ajax:success', (evt, data) ->
     $('.places')[0].innerHTML = data
 
+  # In Place form
+  $('#update_external_id').click (e) ->
+    e.preventDefault()
+    console.debug 'Clicked!'
+    placeService = new google.maps.places.PlacesService($('#google-places-attribution')[0])
+    request =
+      name: $('#place_name').val()
+      location: new google.maps.LatLng($('#place_latitude').val(),$('#place_longitude').val())
+      radius: 500
+      types: ['bar']
+      rankBy: google.maps.places.RankBy.PROMINENCE
+    console.debug request
+
+    placeService.nearbySearch(request, (results, status) =>
+      if status == google.maps.places.PlacesServiceStatus.OK
+        place = results[0]
+        msg = "Is this the correct place?\n\n#{place.name}\n#{place.vicinity}"
+        if confirm(msg)
+          $('#place_external_id').val(place.place_id)
+      else
+        alert("Unable to find external ID for place named #{request.name}")
+    )
+
 window.receiveLocation = (position) ->
   location = position.coords.latitude + "," + position.coords.longitude
   $("input#address").val(location)

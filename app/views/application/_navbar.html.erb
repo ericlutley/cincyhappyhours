@@ -14,7 +14,7 @@
     <div class="collapse navbar-collapse" id="navbar-collapse">
       <ul class="nav navbar-nav">
         <% if can? :create, Place %>
-          <li><%= link_to 'Add a place', new_place_path %></li>
+          <li><%= link_to 'Add a place', search_places_path %></li>
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">

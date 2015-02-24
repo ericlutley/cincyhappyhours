@@ -19,6 +19,18 @@
     <%= f.label :address %><br />
     <%= f.text_field :address, class: 'form-control' %>
   </div>
+  <% if @place.persisted? && @place.external_id.blank? %>
+    <div class="form-group">
+      <%= f.label :external_id, 'External ID' %>
+      <%= button_tag 'Update', class: 'btn btn-link', id: 'update_external_id' %><br />
+      <%= f.text_field :external_id, class: 'form-control', readonly: 'readonly' %>
+    </div>
+  <% elsif @place.new_record? %>
+    <%= f.hidden_field :external_id %>
+  <% end %>
+
+  <%= f.hidden_field :latitude %>
+  <%= f.hidden_field :longitude %>
 
   <div class="actions">
     <%= f.button 'Reset', class: 'btn btn-link', type: 'reset' if defined?(reset) && reset %>

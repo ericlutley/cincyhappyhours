@@ -26,4 +26,7 @@ HappyHour::Application.configure do
   config.assets.debug = true
 
   config.eager_load = false
+
+  # Use unminified version of react in development
+  config.react.variant = :development
 end
