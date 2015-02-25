@@ -19,7 +19,6 @@ $ ->
   # In Place form
   $('#update_external_id').click (e) ->
     e.preventDefault()
-    console.debug 'Clicked!'
     placeService = new google.maps.places.PlacesService($('#google-places-attribution')[0])
     request =
       name: $('#place_name').val()
@@ -27,7 +26,6 @@ $ ->
       radius: 500
       types: ['bar']
       rankBy: google.maps.places.RankBy.PROMINENCE
-    console.debug request
 
     placeService.nearbySearch(request, (results, status) =>
       if status == google.maps.places.PlacesServiceStatus.OK
