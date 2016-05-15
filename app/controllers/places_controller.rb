@@ -15,7 +15,7 @@ class PlacesController < ApplicationController
   end
 
   def new
-    @place = Place.new(new_place_params)
+    @place = Place.new(place_params)
     authorize! :create, @place
 
     if @place.external_id.present?
