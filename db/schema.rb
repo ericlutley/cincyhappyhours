@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20150221034055) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "postgis"
 
   create_table "places", force: :cascade do |t|
     t.string   "name"

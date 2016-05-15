@@ -7,9 +7,11 @@ gem 'rails', '4.2.0'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'activerecord-postgis-adapter'
 gem 'pg'
 gem 'puma'
 gem 'rack-timeout'
+gem 'rgeo'
 
 
 group :development, :test do
