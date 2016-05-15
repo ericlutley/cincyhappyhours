@@ -1,0 +1,40 @@
+---
+- hosts: all
+  sudo: yes
+  vars:
+    ansible_ssh_user: vagrant
+    document_root: /vagrant
+    rvm1_rvm_check_for_updates: False
+    rvm1_rubies:
+      - ruby-2.2.1
+    rvm1_install_flags: '--auto-dotfiles --user-install'
+    rvm1_install_path: '/home/{{ ansible_ssh_user }}/.rvm'
+    rvm1_user: '{{ ansible_ssh_user }}'
+  pre_tasks:
+    - name: update apt cache
+      apt: update_cache=yes cache_valid_time=3600
+  roles:
+    # Requires running `sudo ansible-galaxy install rvm_io.rvm1-ruby`
+    - { role: rvm_io.rvm1-ruby, tags: ruby, sudo: True }
+  tasks:
+    - name: Install Rails/gem prerequisites
+      apt: name={{ item }} state=present
+      with_items:
+        - build-essential
+        - libqt4-dev
+        - libqtwebkit-dev
+        - xvfb
+
+    # Postgresql time
+    - apt: name={{ item }} state=present
+      with_items:
+        - libpq-dev
+        - postgresql-9.4
+        - postgresql-contrib-9.4
+        - postgresql-server-dev-9.4
+        - postgresql-9.4-postgis-2.1
+        - python-psycopg2
+
+    - name: Configure vagrant PostgreSQL user
+      postgresql_user: user=vagrant role_attr_flags=SUPERUSER
+      sudo_user: postgres

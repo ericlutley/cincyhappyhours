@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.3'
+ruby '2.2.1'
 
 gem 'rails', '4.2.0'
 
@@ -17,6 +17,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'headless', require: false # Xvfb interface (for capybara-webkit)
   gem 'capybara'
   gem "capybara-webkit"
   gem "codeclimate-test-reporter", require: false
@@ -30,6 +31,7 @@ end
 gem 'rails_12factor', group: :production
 
 # Asset gems
+gem 'therubyracer' # needed for coffee-rails
 gem 'sass-rails', '>= 4.0.2'
 gem 'bootstrap-sass'
 gem 'coffee-rails'
